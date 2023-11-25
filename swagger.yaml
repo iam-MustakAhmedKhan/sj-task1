@@ -6,7 +6,7 @@ info:
   version: 1.0.0
 externalDocs: 
   description: Github Repository
-  url: https://www.github.com
+  url: https://github.com/iam-MustakAhmedKhan/sj-task1
 servers:
  - url: http://localhost:3000
 tags:
