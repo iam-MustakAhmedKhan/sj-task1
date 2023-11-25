@@ -29,7 +29,7 @@ To run this project, you will need to add the following environment variables to
 
 ## Documentation
 
-after successfully install this repo . can test the api with swagger Documentation
+after successfully installing this repo. can test the API with Swagger documentation
 
 ```http
 GET /docs/v1
