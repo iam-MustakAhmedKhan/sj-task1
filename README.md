@@ -8,7 +8,7 @@ Simple Task Api implementation given by SJ-innovation
 
 ## Installation
 
-To install this project in you local machine you have to clone this repository first
+To install this project in your local machine you have to clone this repository first
 
 
 ```bash
