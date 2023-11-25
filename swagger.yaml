@@ -1,0 +1,193 @@
+openapi: 3.0.3
+info:
+  title: Simple Backend task by SJ-Innovation
+  description: >
+    This is a simple task given by SJ-Innovation
+  version: 1.0.0
+externalDocs: 
+  description: Github Repository
+  url: https://www.github.com
+servers:
+ - url: http://localhost:3000
+tags:
+ - name: tasks
+   description: Everything about Tasks
+ - name: health
+   description: Check health of tasks api
+paths:
+  /tasks:
+    get:
+      tags:
+        - tasks
+      summary: Find All tasks
+      description: By this Endpoint we can get all the tasks available in the database
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/tasks'
+        '204':
+          description: No Content
+    post:
+      tags:
+        - tasks
+      summary: create a tasks
+      description: we can create a task with this endpoint
+      requestBody:
+        description: create a new tasks
+        content:
+          application/json:
+            schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    example: simple task title
+                  description:
+                    type: string
+                    example: this is a simple description
+      responses:
+        '201':
+          description: Tasks created Successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tasks'
+        '405':
+          description: invalid input
+  /tasks/{id}:
+    get:
+      tags:
+        - tasks
+      summary: Find by Id
+      description: Find a single data by this endpoint
+      parameters:
+        - name: id
+          in: path
+          description: pass id to get data
+          required: true
+          schema:
+            type: string
+        
+      responses:
+        '200':
+          description : success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tasks'
+                
+        '404':
+          description: Tasks not Found
+    put:
+      tags:
+        - tasks
+      summary: update a task
+      description: we can update a task by this endpoint
+      parameters:
+        - name: id
+          in: path
+          description: pass id to get data
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: create a new tasks
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: simple task title
+                description:
+                  type: string
+                  example: this is a simple description
+                status:
+                  type: string
+                  enum:
+                    - incomplete
+                    - complete
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tasks'
+        '400':
+          description: Invalid ID
+    delete:
+      tags:
+        - tasks
+      summary: Delete a task
+      description: we can delete a task by this endpoint
+      parameters:
+        - name: id
+          in: path
+          description: pass id to get data
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: task deleted successfully
+
+        '400':
+          description: Invalid ID
+        '404':
+          description: User not found
+  /health:
+    get:
+      tags:
+        - health
+      summary: Health Check
+      description: Check the health of the api
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - Ok
+components: 
+  schemas:
+    tasks:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: "655656176f1207c76ed3251b"
+        title:
+          type: string
+          example: simple task title
+        description:
+          type: string
+          example: this is a simple description
+        status:
+          type: string
+          example: incomplete
+        dueDate:
+          type: string
+          example: 2023-11-04T18:36:27.975+00:00
+
+
+    
