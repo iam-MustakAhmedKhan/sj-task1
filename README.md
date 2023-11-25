@@ -34,7 +34,7 @@ after successfully install this repo . can test the api with swagger Documentati
 ```http
 GET /docs/v1
 ```
-![Swagger documentation](image.png)
+![Swagger documentation](public/image.png)
 
 ## API Reference
 
