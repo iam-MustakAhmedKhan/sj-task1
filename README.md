@@ -42,7 +42,7 @@ GET /docs/v1
 
 ```http
 GET /health
-
+```
 
 #### **Post a Task**
 
